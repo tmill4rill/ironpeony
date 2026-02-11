@@ -637,6 +637,10 @@
     border:3px solid var(--border);
     transition:all .4s var(--ease);
     display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .team-avatar img{
+    width:100%;height:100%;object-fit:cover;display:block;
   }
   .team-card:hover .team-avatar{
     border-color:var(--accent);
@@ -646,6 +650,7 @@
   .team-avatar .initials{
     font-family:var(--serif);font-size:1.6rem;font-style:italic;
     color:var(--accent);
+    display:none;
   }
   .team-card h3{
     font-family:var(--serif);font-size:1.1rem;
@@ -1059,13 +1064,13 @@
     <div class="hero-media hero-carousel" id="heroCarousel" aria-label="Featured work carousel">
       <div class="hero-carousel-track">
         <figure class="hero-slide is-active" data-index="0">
-          <img src="https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/0ed4b0ee-67d2-4150-8ea7-7fa8c52d49b2_rwc_0x0x1920x1082x32.jpg?h=6fb5e6c8965631d1d3c0950ffd0726d1" alt="Longwood Gardens campaign photography">
+          <img src="assets/case-studies/longwood/longwood-hero.jpg" alt="Longwood Gardens campaign photography">
         </figure>
         <figure class="hero-slide" data-index="1">
           <img src="https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/ddf68579-ddc7-473c-8a00-81c477a6629e_rwc_0x0x1493x842x32.png?h=8dcc717ed81b7dfb6d7f70ef408afb8f" alt="Friends of the Wissahickon brand campaign">
         </figure>
         <figure class="hero-slide" data-index="2">
-          <img src="https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/03307dd6-8cc9-4348-84fd-7e2c5360407c_rwc_0x318x3333x1878x32.png?h=f181c1110af6a1ef9cd761ba63ffd383" alt="Barstool Sportsbook digital experience">
+          <img src="assets/case-studies/barstool/barstool-cover.png" alt="Barstool Sportsbook digital experience">
         </figure>
       </div>
       <div class="hero-carousel-controls">
@@ -1131,7 +1136,7 @@
       <!-- ROW 2 -->
       <a href="#" class="project-card" data-reveal data-project="salus">
         <div class="project-thumb">
-          <img src="https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/d47546ca-e828-44d9-b17d-bdefea7bd811_rwc_0x303x3333x1879x32.png?h=73352cad3e93d30357e5eeabbb538c61" alt="Salus at Drexel University">
+          <img src="assets/case-studies/salus/salus-cover.png" alt="Salus at Drexel University">
           <div class="project-overlay"><span>View Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17l9.2-9.2M7 7h10v10"/></svg></span></div>
         </div>
         <div class="project-info">
@@ -1143,7 +1148,7 @@
 
       <a href="#" class="project-card" data-reveal data-project="barstool">
         <div class="project-thumb">
-          <img src="https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/03307dd6-8cc9-4348-84fd-7e2c5360407c_rwc_0x318x3333x1878x32.png?h=f181c1110af6a1ef9cd761ba63ffd383" alt="Barstool Sportsbook">
+          <img src="assets/case-studies/barstool/barstool-cover.png" alt="Barstool Sportsbook">
           <div class="project-overlay"><span>View Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17l9.2-9.2M7 7h10v10"/></svg></span></div>
         </div>
         <div class="project-info">
@@ -1206,7 +1211,7 @@
       <!-- ROW 5 -->
       <a href="#" class="project-card" data-reveal data-project="longwood">
         <div class="project-thumb">
-          <img src="https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/0ed4b0ee-67d2-4150-8ea7-7fa8c52d49b2_rwc_0x0x1920x1082x32.jpg?h=6fb5e6c8965631d1d3c0950ffd0726d1" alt="Longwood Gardens">
+          <img src="assets/case-studies/longwood/longwood-hero.jpg" alt="Longwood Gardens">
           <div class="project-overlay"><span>View Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17l9.2-9.2M7 7h10v10"/></svg></span></div>
         </div>
         <div class="project-info">
@@ -1243,7 +1248,7 @@
 
       <a href="#" class="project-card" data-reveal data-project="logos">
         <div class="project-thumb">
-          <img src="https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/c0345e0a-b047-4b1e-b92e-886e86d85169_carw_16x9x32.jpg?h=4b7dba68d9bfa87dbdabaebbfd66fc70" alt="Logos">
+          <img src="assets/case-studies/logos/logos-hero.png" alt="Logos">
           <div class="project-overlay"><span>View Case Study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17l9.2-9.2M7 7h10v10"/></svg></span></div>
         </div>
         <div class="project-info">
@@ -1308,7 +1313,9 @@
     <div class="team-grid">
 
       <div class="team-card" data-reveal>
-        <div class="team-avatar"><span class="initials">TM</span></div>
+        <div class="team-avatar">
+          <img src="assets/team-members/thomas.jpg" alt="Thomas Miller">
+        </div>
         <h3>Thomas Miller</h3>
         <div class="team-role">Founder & Creative Director</div>
         <p class="team-bio">20+ years in design, with leadership roles at Apple, Comcast, Barstool Sportsbook, Pearson, and Credly. Design systems expert and team builder.</p>
@@ -1318,7 +1325,9 @@
       </div>
 
       <div class="team-card" data-reveal>
-        <div class="team-avatar"><span class="initials">AS</span></div>
+        <div class="team-avatar">
+          <img src="assets/team-members/ashley.jpg" alt="Ashley Suszczynski">
+        </div>
         <h3>Ashley Suszczynski</h3>
         <div class="team-role">Photographer</div>
         <p class="team-bio">Award-winning photojournalist capturing culture and tradition across the globe.</p>
@@ -1328,7 +1337,9 @@
       </div>
 
       <div class="team-card" data-reveal>
-        <div class="team-avatar"><span class="initials">KD</span></div>
+        <div class="team-avatar">
+          <img src="assets/team-members/kendra.jpg" alt="Kendra Dingley">
+        </div>
         <h3>Kendra Dingley</h3>
         <div class="team-role">Designer</div>
         <p class="team-bio">Creative designer with a passion for exploration and problem-solving through visual storytelling.</p>
@@ -1338,7 +1349,9 @@
       </div>
 
       <div class="team-card" data-reveal>
-        <div class="team-avatar"><span class="initials">AV</span></div>
+        <div class="team-avatar">
+          <img src="assets/team-members/ava.jpg" alt="Ava Salazar">
+        </div>
         <h3>Ava Salazar</h3>
         <div class="team-role">Product Designer / UX Strategist</div>
         <p class="team-bio">Multi-disciplinary designer bridging UX strategy and visual craft to build intuitive digital products.</p>
@@ -1348,7 +1361,9 @@
       </div>
 
       <div class="team-card" data-reveal>
-        <div class="team-avatar"><span class="initials">SG</span></div>
+        <div class="team-avatar">
+          <img src="assets/team-members/Savanna_Miller.jpg" alt="Savanna Grace">
+        </div>
         <h3>Savanna Grace</h3>
         <div class="team-role">Creative Strategist</div>
         <p class="team-bio">Brings fresh perspective and strategic thinking to every brand challenge.</p>
@@ -1358,7 +1373,9 @@
       </div>
 
       <div class="team-card" data-reveal>
-        <div class="team-avatar"><span class="initials">GM</span></div>
+        <div class="team-avatar">
+          <img src="assets/team-members/gabriel.jpg" alt="Gabriel Miller">
+        </div>
         <h3>Gabriel Miller</h3>
         <div class="team-role">Developer</div>
         <p class="team-bio">Turns creative visions into functional, polished digital experiences.</p>
@@ -2477,7 +2494,7 @@ const caseStudies = {
     title: 'Salus at Drexel University',
     subtitle: 'Bringing Healthcare on the Move',
     tags: ['Branding', 'Vehicle Wrap', 'Pattern Design'],
-    heroImg: 'https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/d47546ca-e828-44d9-b17d-bdefea7bd811_rwc_0x303x3333x1879x32.png?h=73352cad3e93d30357e5eeabbb538c61',
+    heroImg: 'assets/case-studies/salus/salus-cover.png',
     meta: { Client: 'Salus University / Drexel University', Industry: 'Healthcare / Education', Services: 'Vehicle Wrap Design, Pattern Design, Brand Alignment', Year: '2023' },
     body: `
       <h3>The Brief</h3>
@@ -2494,15 +2511,16 @@ const caseStudies = {
       <h3>The Result</h3>
       <p>The final bus wrap transformed the Mobile Health Unit into a moving billboard for community wellness — approachable, professional, and unmistakably connected to both institutions it represents.</p>
     `,
-    images: [
-      'https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/d47546ca-e828-44d9-b17d-bdefea7bd811_rwc_0x303x3333x1879x32.png?h=73352cad3e93d30357e5eeabbb538c61'
+    gallery: [
+      { src: 'assets/case-studies/salus/salus-pattern-01.png', alt: 'Salus at Drexel custom pattern exploration' },
+      { src: 'assets/case-studies/salus/salus-pattern-02.png', alt: 'Salus at Drexel pattern system detail' }
     ]
   },
   barstool: {
     title: 'Barstool Sportsbook',
     subtitle: 'Shareable Betslip — Innovative Sports Betting Experience',
     tags: ['UX Design', 'Product Design', 'Mobile App'],
-    heroImg: 'https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/03307dd6-8cc9-4348-84fd-7e2c5360407c_rwc_0x318x3333x1878x32.png?h=f181c1110af6a1ef9cd761ba63ffd383',
+    heroImg: 'assets/case-studies/barstool/barstool-cover.png',
     meta: { Client: 'Penn National Gaming / Barstool Sportsbook', Industry: 'Sports Entertainment / Fintech', Services: 'UX Design, Product Strategy, Social Features', Year: '2021–2022' },
     stats: [
       { num: '1.06M', label: 'Total Shares' },
@@ -2537,8 +2555,11 @@ const caseStudies = {
       <h3>Conclusion</h3>
       <p>The successful implementation and positive reception of the Parlay Sharing Flow highlights the importance of social features in enhancing user experience and driving business growth. The feature's ability to generate significant engagement and profitability underscores its value to both users and the business.</p>
     `,
-    images: [
-      'https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/03307dd6-8cc9-4348-84fd-7e2c5360407c_rwc_0x318x3333x1878x32.png?h=f181c1110af6a1ef9cd761ba63ffd383'
+    galleryLayout: 'single-col',
+    gallery: [
+      { src: 'assets/case-studies/barstool/barstool-flow.png', alt: 'Barstool Sportsbook shareable betslip flow' },
+      { src: 'assets/case-studies/barstool/barstool-betslip-01.png', alt: 'Barstool Sportsbook betslip share preview' },
+      { src: 'assets/case-studies/barstool/barstool-betslip-02.png', alt: 'Barstool Sportsbook betslip share detail' }
     ]
   },
   aaa: {
@@ -2647,7 +2668,7 @@ const caseStudies = {
     title: 'Longwood Gardens',
     subtitle: 'A Legacy of Beauty and Design',
     tags: ['Publication Design', 'Print', 'Photography'],
-    heroImg: 'https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/0ed4b0ee-67d2-4150-8ea7-7fa8c52d49b2_rwc_0x0x1920x1082x32.jpg?h=6fb5e6c8965631d1d3c0950ffd0726d1',
+    heroImg: 'assets/case-studies/longwood/longwood-hero.jpg',
     meta: { Client: 'Longwood Gardens', Industry: 'Arts & Culture / Horticulture', Services: 'Publication Design, Cover Design, Page Layout', Year: '2018' },
     body: `
       <h3>The Brief</h3>
@@ -2664,8 +2685,9 @@ const caseStudies = {
       <h3>The Result</h3>
       <p>A publication that matched the elegance and care that Longwood Gardens brings to everything it does — print materials that visitors treasure long after their visit.</p>
     `,
-    images: [
-      'https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/0ed4b0ee-67d2-4150-8ea7-7fa8c52d49b2_rwc_0x0x1920x1082x32.jpg?h=6fb5e6c8965631d1d3c0950ffd0726d1'
+    galleryLayout: 'single-col',
+    gallery: [
+      { src: 'assets/case-studies/longwood/longwood-spread.png', alt: 'Longwood Gardens publication spread detail' }
     ]
   },
   beautifullymade: {
@@ -2722,7 +2744,7 @@ const caseStudies = {
     title: 'Logo Collection',
     subtitle: 'Crafting Distinctive Brand Identities',
     tags: ['Logo Design', 'Branding', 'Identity'],
-    heroImg: 'https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/c0345e0a-b047-4b1e-b92e-886e86d85169_carw_16x9x32.jpg?h=4b7dba68d9bfa87dbdabaebbfd66fc70',
+    heroImg: 'assets/case-studies/logos/logos-hero.png',
     meta: { Client: 'Various Small Businesses', Industry: 'Multi-Industry', Services: 'Logo Design, Mark Development, Brand Identity', Year: 'Ongoing' },
     body: `
       <h3>The Work</h3>
@@ -2738,8 +2760,10 @@ const caseStudies = {
         <li>Final delivery with full brand mark guidelines</li>
       </ul>
     `,
-    images: [
-      'https://cdn.myportfolio.com/222e868c3fe71bf6b96bfa8f595d0fbc/c0345e0a-b047-4b1e-b92e-886e86d85169_carw_16x9x32.jpg?h=4b7dba68d9bfa87dbdabaebbfd66fc70'
+    galleryLayout: 'single-col',
+    gallery: [
+      { src: 'assets/case-studies/logos/logos-grid.png', alt: 'Logo collection grid' },
+      { src: 'assets/case-studies/logos/logos-example.jpg', alt: 'Logo concept exploration' }
     ]
   }
 };
@@ -2760,6 +2784,14 @@ function openCaseStudy(slug) {
     statsHTML = '<div class="cs-stats">' + cs.stats.map(s => 
       `<div><div class="cs-stat-num">${s.num}</div><div class="cs-stat-label">${s.label}</div></div>`
     ).join('') + '</div>';
+  }
+
+  let galleryHTML = '';
+  if (cs.gallery && cs.gallery.length) {
+    const galleryClass = cs.galleryLayout ? ` cs-gallery ${cs.galleryLayout}` : ' cs-gallery';
+    galleryHTML = `<div class="${galleryClass.trim()}">
+      ${cs.gallery.map(img => `<img src="${img.src}" alt="${img.alt || ''}">`).join('')}
+    </div>`;
   }
   
   let metaHTML = Object.entries(cs.meta).map(([k,v]) => 
@@ -2790,6 +2822,7 @@ function openCaseStudy(slug) {
       <div class="cs-meta">${metaHTML}</div>
       ${statsHTML}
       <div class="cs-body">${cs.body}</div>
+      ${galleryHTML}
       ${navHTML}
     </div>
   `;
