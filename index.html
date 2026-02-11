@@ -1732,6 +1732,52 @@
 
   document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
 
+  // ─── SECTION AWARENESS TRACKER ───
+  // Tracks which site section the visitor is currently viewing.
+  // Used to give the voice and chat assistants contextual awareness.
+  let currentVisibleSection = 'hero';
+
+  const sectionMap = {
+    'hero': { name: 'Hero / Homepage', context: 'The visitor is on the main homepage hero section, seeing the studio tagline, featured project carousel, and call-to-action buttons.' },
+    'work': { name: 'Selected Work', context: 'The visitor is browsing the case studies / portfolio section, looking at project cards for clients like Friends of the Wissahickon, Salus, Barstool Sportsbook, and others.' },
+    'about': { name: 'About the Studio', context: 'The visitor is reading about Iron Peony\'s story, studio stats (200+ projects, 50+ brands), and the studio\'s approach to craft and strategy.' },
+    'team': { name: 'Meet the Team', context: 'The visitor is looking at the team section, seeing team member cards for Thomas Miller, Ashley, Kendra, Ava, Savanna, and Gabriel.' },
+    'capabilities': { name: 'Services & Capabilities', context: 'The visitor is exploring the services grid, which lists all 16 service offerings including Branding, Design Systems, UX, Photography, and more.' },
+    'contact': { name: 'Contact / CTA', context: 'The visitor is at the "Let\'s Work Together" contact section at the bottom of the page — they may be ready to start a project.' }
+  };
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+        const id = entry.target.id || entry.target.className.split(' ')[0];
+        if (sectionMap[id]) {
+          currentVisibleSection = id;
+        }
+      }
+    });
+  }, { threshold: [0.3, 0.6] });
+
+  // Observe all major sections
+  document.querySelectorAll('section[id], section.hero, section.about').forEach(sec => {
+    sectionObserver.observe(sec);
+  });
+  // Also observe hero by class since it doesn't have an id
+  const heroEl = document.querySelector('.hero');
+  if (heroEl) {
+    heroEl.id = heroEl.id || 'hero';
+    sectionObserver.observe(heroEl);
+  }
+
+  function getCurrentVisibleSection() {
+    return currentVisibleSection;
+  }
+
+  function getSectionContext() {
+    const section = sectionMap[currentVisibleSection];
+    if (!section) return '';
+    return `\n\nCURRENT PAGE CONTEXT:\nThe visitor is currently viewing the "${section.name}" section of the Iron Peony website. ${section.context} Tailor your response to be relevant to what they're currently looking at when appropriate.`;
+  }
+
   // ─── SERVICES DIALOG ───
   const serviceData = {
     branding: {
@@ -2397,23 +2443,10 @@ BEHAVIOR:
     document.getElementById('voiceTranscript').textContent = '';
 
     try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': ANTHROPIC_API_KEY,
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true'
-        },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 250,
-          system: VOICE_SYSTEM_PROMPT,
-          messages: voiceHistory.slice(-10)
-        })
-      });
+      // Inject current page section context into the voice prompt
+      const contextualPrompt = VOICE_SYSTEM_PROMPT + getSectionContext();
+      const data = await callAPI(contextualPrompt, voiceHistory.slice(-10), 250);
 
-      const data = await response.json();
       orb.classList.remove('thinking');
 
       if (data.content && data.content[0]) {
@@ -2422,8 +2455,11 @@ BEHAVIOR:
         addVoiceMsg(botText, 'bot');
         speakText(botText);
       } else {
+        const errMsg = data.error && data.error.type === 'rate_limit'
+          ? "We're getting a lot of requests. Give it a moment and try again!"
+          : "I'm having trouble right now. Try again or reach out at hello@ironpeony.com!";
         document.getElementById('voiceStatusLabel').textContent = 'Tap the mic to try again';
-        addVoiceMsg("I'm having trouble right now. Try again or reach out at hello@ironpeony.com!", 'bot');
+        addVoiceMsg(errMsg, 'bot');
       }
     } catch (err) {
       orb.classList.remove('thinking');
